@@ -41,17 +41,15 @@ class ProductTemplate(models.Model):
         if "categ_id" in vals:
             category = self.env["product.category"].browse(vals["categ_id"])
             # Only update products that don't have an explicit code set
-            for product in self:
-                if not product.compliance_code_id and category.compliance_code_id:
+            if category.compliance_code_id:
+                for product in self.filtered(lambda prod: not prod.compliance_code_id):
                     # Add compliance_code_id to vals for this specific product
                     if len(self) == 1:
                         # Single record update
                         vals["compliance_code_id"] = category.compliance_code_id.id
                     else:
                         # Multiple records - update individually
-                        super(ProductTemplate, product).write(
-                            {"compliance_code_id": category.compliance_code_id.id}
-                        )
+                        product.compliance_code_id = category.compliance_code_id.id
         return super().write(vals)
 
     @api.onchange("categ_id")
