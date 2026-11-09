@@ -20,31 +20,18 @@
             <kanban>
                 <field name="id" />
                 <templates>
-                    <t t-name="card">
-                        <div
-                            t-attf-class="oe_kanban_global_click"
-                            style="min-width:450px;min-height:80px"
-                        >
-                            <div class="o_kanban_image_fill position-relative w-100">
-                                <field
-                                    name="image"
-                                    t-if="record.image"
-                                    class="o_image_64_contain mw-100"
-                                    widget="image"
-                                    options="{'preview_image': 'image', 'img_class': 'object-fit-contain'}"
-                                />
-                            </div>
-                            <div class="oe_kanban_details">
-                                <p>
-                                    <strong>
-                                        <field name="code" />
-                                    </strong>
-                                </p>
-                                <p>
-                                    <field name="name" />
-                                </p>
-                            </div>
-                        </div>
+                    <t t-name="card" class="flex-row align-items-center">
+                        <aside class="me-3" t-if="record.image.raw_value">
+                            <field
+                                name="image"
+                                widget="image"
+                                options="{'img_class': 'o_image_64_contain'}"
+                            />
+                        </aside>
+                        <main class="overflow-hidden">
+                            <field name="code" class="fw-bold" />
+                            <field name="name" class="text-wrap" />
+                        </main>
                     </t>
                 </templates>
             </kanban>

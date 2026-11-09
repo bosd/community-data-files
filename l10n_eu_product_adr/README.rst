@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ===================
 ADR Dangerous Goods
 ===================
@@ -17,7 +13,7 @@ ADR Dangerous Goods
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fcommunity--data--files-lightgray.png?logo=github
@@ -96,6 +92,15 @@ Known issues / Roadmap
 
 Changelog
 =========
+
+18.0.1.1.1
+----------
+
+- [FIX] Restore the label pictograms on existing databases. The
+  pictograms were lost when the data files were migrated to CSV, and the
+  restored ``noupdate`` data file does not update existing labels.
+- [FIX] Show the label pictogram next to its code and name in the kanban
+  card, so the text no longer overflows the card.
 
 14.0.1.0.0 (2021-05-04)
 -----------------------
